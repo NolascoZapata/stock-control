@@ -3,7 +3,6 @@ const sortProdAz = (products, azName) => {
     products.sort(function (a, b) {
       return a.name.localeCompare(b.name);
     })
-    
     return products
 
   } else if (azName === false) {
@@ -11,7 +10,6 @@ const sortProdAz = (products, azName) => {
       return b.name.localeCompare(a.name);
     })
     return products
-
   }
 }
 const sortProdStock = (products, maxFirst) => {
@@ -29,21 +27,29 @@ const sortProdStock = (products, maxFirst) => {
   }
 }
 
-const filterCheckBox = (products)=>{
-  let categoriesList=[]
+const filterCheckBox = () => {
+  
   const categoriesCheck = document.querySelectorAll('.cat-checkbox')
-  categoriesCheck.forEach(cat=> {
-    categoriesList.push((cat.id.slice(16)).toLowerCase())
-  })
-  categoriesCheck.forEach(cat=>cat.onclick=()=>{
-    if (cat.checked) {
-      console.log(`categoria checkeada`);
-    } else {
+  categoriesCheck.forEach(cat => {
+    cat.addEventListener('change',e=>{
+      const isChecked = e.target.checked
+      if (isChecked) {
+        let elements = document.getElementsByClassName(`category-tag-${e.target.value}`)
+        for (let i = 0; i < elements.length; i++) {
+          const element = elements[i];
+          element.parentElement.style.display=''
+          
+        }
       
-      console.log(`categoria no checkeada`);
-      let noCheckprod= products.filter(prod=>prod.category===cat.id.slice(16).toLowerCase())
-      console.log('noCheckprod',noCheckprod);
-    }
+      } else {
+        let elements = document.getElementsByClassName(`category-tag-${e.target.value}`)
+        for (let i = 0; i < elements.length; i++) {
+          const element = elements[i];
+          element.parentElement.style.display='none'
+          
+        }
+      }
+    })
   })
-
 }
+

@@ -4,6 +4,14 @@
     flex-direction: column;
     padding: 20%;
   }
+  .sort-side-bar h5{
+    margin: 10px 0px 
+  }
+
+  .sort-side-bar .form-check-input:checked {
+    background-color: #6c757d;
+    border-color: #6c757d;
+}
 </style>
 
 <script>
@@ -25,7 +33,7 @@
       let respArrHtml = categories.map(cat =>
         `
         <div class="form-check">
-          <input class="form-check-input cat-checkbox" type="checkbox" value="" id="flexCheckChecked${cat.charAt(0).toUpperCase() + cat.slice(1)}" checked>
+          <input class="form-check-input cat-checkbox" type="checkbox" value="${cat}" id="flexCheckChecked${cat.charAt(0).toUpperCase() + cat.slice(1)}" checked>
           <label class="form-check-label" for="flexCheckChecked${cat.charAt(0).toUpperCase() + cat.slice(1)}">
             ${cat.charAt(0).toUpperCase() + cat.slice(1)}
           </label>
@@ -33,7 +41,7 @@
                 `
       )
 
-      let respStringAll = `<h6>Category</h6>`
+      let respStringAll = `<h5>Category</h5>`
       for (let i = 0; i < respArrHtml.length; i++) {
         respStringAll = respStringAll + respArrHtml[i]
       }
@@ -43,8 +51,8 @@
 </script>
 
 <div class="sort-side-bar">
-  <div>
-  <h6>Sort by name</h6>
+<div>
+  <h5>Sort by name</h5>
   <div class="form-check">
     <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" onclick="reloadData('az',true)" checked>
     <label class="form-check-label" for="flexRadioDefault1">
@@ -58,7 +66,7 @@
     </label>
   </div>
 
-  <h6>Sort by stock</h6>
+  <h5>Sort by stock</h5>
   <div class="form-check">
     <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" onclick="reloadData('sort',false)">
     <label class="form-check-label" for="flexRadioDefault1">
