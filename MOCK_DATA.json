@@ -1,0 +1,91 @@
+[{
+    "name": "Plexiglass",
+    "stock": 25,
+    "category": "construction"
+  },
+  {
+    "name": "Glass",
+    "stock": 77,
+    "category": "construction"
+  },
+  {
+    "name": "Aluminum",
+    "stock": 46,
+    "category": "construction"
+  },
+  {
+    "name": "Stone",
+    "stock": 23,
+    "category": "construction"
+  },
+  {
+    "name": "Plastic",
+    "stock": 31,
+    "category": "construction"
+  },
+  {
+    "name": "Steel",
+    "stock": 16,
+    "category": "construction"
+  },
+  {
+    "name": "Wood",
+    "stock": 29,
+    "category": "construction"
+  },
+  {
+    "name": "Rubber",
+    "stock": 26,
+    "category": "construction"
+  },
+  {
+    "name": "Granite",
+    "stock": 6,
+    "category": "construction"
+  },
+  {
+    "name": "Vinyl",
+    "stock": 5,
+    "category": "construction"
+  },
+  {
+    "name": "Brass",
+    "stock": 50,
+    "category": "construction"
+  },
+  {
+    "name": "Soccer ball",
+    "stock": 35,
+    "category": "sports"
+  },
+  {
+    "name": "Basketball ball",
+    "stock": 18,
+    "category": "sports"
+  },
+  {
+    "name": "Voleyball ball",
+    "stock": 24,
+    "category": "sports"
+  },
+  {
+    "name": "Tennis ball",
+    "stock": 26,
+    "category": "sports"
+  },
+  {
+    "name": "Golf ball",
+    "stock": 6,
+    "category": "sports"
+  },
+  {
+    "name": "Ping Pong ball",
+    "stock": 5,
+    "category": "sports"
+  },
+  {
+    "name": "Handball ball",
+    "stock": 50,
+    "category": "sports"
+  }
+]

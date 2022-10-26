@@ -1,0 +1,78 @@
+<style>
+  .sort-side-bar {
+    display: flex;
+    flex-direction: column;
+    padding: 20%;
+  }
+</style>
+
+<script>
+
+  let categories = []
+  let products = []
+  fetch('http://localhost:8080/control/products/')
+    .then(response => response.json())
+    .then(data => products = data)
+    .catch(error => console.error(error))
+    .then(() => {
+      for (let i = 0; i < products.length; i++) {
+        let categ = products[i].category;
+        let pos = categories.indexOf(categ)
+        if (pos === -1) {
+          categories.push(categ)
+        }
+      }
+      let respArrHtml = categories.map(cat =>
+        `
+        <div class="form-check">
+          <input class="form-check-input cat-checkbox" type="checkbox" value="" id="flexCheckChecked${cat.charAt(0).toUpperCase() + cat.slice(1)}" checked>
+          <label class="form-check-label" for="flexCheckChecked${cat.charAt(0).toUpperCase() + cat.slice(1)}">
+            ${cat.charAt(0).toUpperCase() + cat.slice(1)}
+          </label>
+        </div>
+                `
+      )
+
+      let respStringAll = `<h6>Category</h6>`
+      for (let i = 0; i < respArrHtml.length; i++) {
+        respStringAll = respStringAll + respArrHtml[i]
+      }
+      document.getElementById('categories').innerHTML = respStringAll
+    })
+    
+</script>
+
+<div class="sort-side-bar">
+  <div>
+  <h6>Sort by name</h6>
+  <div class="form-check">
+    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" onclick="reloadData('az',true)" checked>
+    <label class="form-check-label" for="flexRadioDefault1">
+      A-Z
+    </label>
+  </div>
+  <div class="form-check">
+    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2"onclick="reloadData('az',false)">
+    <label class="form-check-label" for="flexRadioDefault2">
+      Z-A
+    </label>
+  </div>
+
+  <h6>Sort by stock</h6>
+  <div class="form-check">
+    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" onclick="reloadData('sort',false)">
+    <label class="form-check-label" for="flexRadioDefault1">
+      Min-Max
+    </label>
+  </div>
+  <div class="form-check" >
+    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" onclick="reloadData('sort',true)">
+    <label class="form-check-label" for="flexRadioDefault2">
+      Max-Min
+    </label>
+  </div>
+</div>
+<div id="categories">
+</div>
+
+</div>

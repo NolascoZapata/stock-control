@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <!-- CSS Stylesheet -->
+  <link rel="stylesheet" href="./css/style.css">
+  <title>Stock Control</title>
+</head>
+
+<body>
+
+  <header class="d-flex justify-content-center">
+    <img width="150px" src="images/logo.png" alt="logo">
+  </header>
+  <main>
+    <form class="d-flex flex-column align-items-center mt-3" action="/auth/login" method="post">
+      <h2 class="text-secondary">Stock Control</h2>
+      <input type="email" name="username" id="email" placeholder="Email" required>
+      <input class="mt-3" type="password" name="password" id="password" placeholder="Password" required>
+      <button type="submit" class="btn btn-secondary mt-2">Sign In</button>
+      <button class="btn bg-transparent mt-2"><a href="/register" class="text-decoration-none text-secondary ">Create
+          account</a></button>
+    </form>
+  </main>
+  <footer class="d-flex justify-content-center align-content-end mt-5">
+    <%- include('./../partials/footer') %>
+
+  </footer>
+  <!-- Boostrap scripts-->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+    integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous">
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+    integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous">
+  </script>
+</body>
+
+</html>
