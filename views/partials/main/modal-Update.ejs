@@ -22,7 +22,7 @@
 
 <script>
   function fillModal(id) {
-    fetch(`http://localhost:8080/control/products/${id}`)
+    fetch(`control/products/${id}`)
       .then(response => response.json())
       .catch(error=>console.log(error.message))
       .then(data => {

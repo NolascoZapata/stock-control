@@ -39,7 +39,7 @@
   const tableProd = document.getElementById('table-products')
   let productsData=[];
   const reloadData = async (ratio,sort) =>{
-    await fetch('http://localhost:8080/control/products/')
+    await fetch('/control/products/')
     .then(response => response.json())
     .then( data =>  productsData=[...data])
     .catch(error => console.error(error.message))

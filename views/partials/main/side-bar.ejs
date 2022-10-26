@@ -18,7 +18,7 @@
 
   let categories = []
   let products = []
-  fetch('http://localhost:8080/control/products/')
+  fetch('/control/products/')
     .then(response => response.json())
     .then(data => products = data)
     .catch(error => console.error(error))

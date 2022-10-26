@@ -17,7 +17,7 @@
 <script>
   //--------------------All Users--------------------
   const users = document.getElementById('users-list')
-  fetch('http://localhost:8080/control/users/')
+  fetch('/control/users/')
     .then(response => response.json())
     .then(data => {
       console.log(data)
@@ -48,7 +48,7 @@
     })
 
     const deleteUser = (email)=> {
-      fetch(`http://localhost:8080/control/users/${email}` ,{
+      fetch(`/control/users/${email}` ,{
         method:'DELETE',
       })
       .then(res=>res.json())
