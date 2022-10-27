@@ -4,6 +4,7 @@ const {
   getAllProdController,
   getProdByParamController,
   saveProdController,
+  updateProdByIdController,
   deleteAllProdController,
   deleteProdByParamController
 } = require ('../controllers/products.controller')
@@ -20,7 +21,7 @@ router.get('/:params',getProdByParamController);
 
 ////only admin
 router.post('/',saveProdController);
-// router.put('/:params',updateProdByParamController);
+router.put('/:id',updateProdByIdController);
 router.delete('/',deleteAllProdController)
 router.delete('/:params',deleteProdByParamController);
 

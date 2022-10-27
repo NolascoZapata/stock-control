@@ -93,6 +93,19 @@ class UsersDao extends MongoDBContainer {
     }
   }
 
+  async updateUserById(id,updatedUser) {
+		try {
+			const user = await this.updateById(id,updatedUser)
+			if (!user) {
+				const errorMessage = `User with id "${id}" can not be updated`;
+				throw new Error(JSON.stringify(errorMessage));
+			} else {
+				return user;
+			}
+		} catch (error) {
+			console.log('error', error.message)
+		}
+	}
 }
 
 module.exports = UsersDao;

@@ -7,6 +7,7 @@ const routes = require('./routes/index.routers')
 const session = require('express-session')
 const MongoStore = require('connect-mongo');
 const passport = require('passport')
+const cors = require('cors')
 
 const PORT = process.env.PORT | 8080
 
@@ -14,7 +15,7 @@ app.use(compression())
 require('dotenv').config();
 
 
-
+app.use(cors())
 app.use(express.json());
 app.use(express.urlencoded({
     extended: true

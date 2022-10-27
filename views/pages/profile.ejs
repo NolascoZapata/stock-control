@@ -31,10 +31,15 @@
         <p class="card-text">Client</p>
         <% } %>
         <p>ID:<%= user._id %></p>
-        <a href="#" class="btn btn-primary">Edit</a>
+        <button class="btn btn-secondary add-btn" data-bs-toggle="modal" data-bs-target="#updateUserModal" onClick=fillModal("<%= user.email%>")>
+          Update user
+        </button>
       </div>
     </div>
+    <!-- Update Product Modal-->
+    <%- include ('./../partials/main/modal-UpdateUser') %>
   </main>
+
 
   <% } %>
   <footer>

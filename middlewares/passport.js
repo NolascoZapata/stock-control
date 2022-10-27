@@ -53,7 +53,6 @@ passport.use('signup',new LocalStrategy({
 passport.use('signin',new LocalStrategy(
 	(username, password, done)=>{
 		User.getUserByEmail(username)
-		
 		.then(user=>{
 			if(!isValidPassword(user,password)){
 				console.log('Incorrect password');
@@ -64,7 +63,8 @@ passport.use('signin',new LocalStrategy(
 		})
 		.catch(error =>{
 			console.log('Error signing in >>>',error.message)
-			return done(error)
+			return done(null,user)
+			//return done(error)
 		})
 
 	}

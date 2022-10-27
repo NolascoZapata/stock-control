@@ -5,6 +5,7 @@ const {
   getAllUsersController,
   getUserByEmailController,
   saveUserController,
+  updateUserByIdController,
   deleteUserByEmailontroller,
   deleteAllUsersController
 } = require('../controllers/users.controller')
@@ -18,8 +19,8 @@ router.use(express.urlencoded({extended: true}))
 //everyone
 router.post('/',saveUserController);
 
-//// only client
-// router.put('/:email',updateUserByEmailController);
+
+router.put('/:id',updateUserByIdController);
 
 ////client or admin 
 router.get('/:email',getUserByEmailController);

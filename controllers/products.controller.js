@@ -51,30 +51,22 @@ const saveProdController = async (req, res, next) => {
   }
 }
 
-// const updateProdController= async(req,res,next)=>{
-//     try {
-//         const {id} = req.params.id
-//         await products.model.findOne({id})
-//                 .then((prod)=>{
-//                     prod.name=req.body.name;
-//                     prod.price=req.body.price;
-//                     prod.size=req.body.size;
-//                     prod.imgDir=req.body.imgDir;
-//                     prod.category=req.body.category;
-//                     prod.stock=req.body.stock;
-//                     prod.timestamp= new Date()
-//                     prod.save()
-//                         .then(()=>{
-//                             console.log('info','[PUT]==> Product updated')
-//                             res.json({prod})
-
-//                         })
-//                 })
-//     } catch (error) {
-//         console.log('error',error.message)
-//         next(error)
-//     }
-// }
+const updateProdByIdController= async(req,res,next)=>{
+    try {
+        const id = req.params.id
+        const updateProd = {
+          name:req.body.name,
+          category:req.body.category,
+          stock:req.body.stock
+        }
+        const prod = await products.updateById(id,updateProd)
+        console.log(`[PUT]==> Update Product with id '${id}'`)
+        res.status(200).json({message:"Product updated",status:"ok"})
+    } catch (error) {
+        console.log('error',error.message)
+        next(error)
+    }
+}
 
 const deleteAllProdController = async (req, res, next) => {
   try {
@@ -123,6 +115,7 @@ module.exports = {
   getAllProdController,
   getProdByParamController,
   saveProdController,
+  updateProdByIdController,
   deleteAllProdController,
   deleteProdByParamController
 

@@ -53,5 +53,15 @@ router.get('/logout',auth, async (req,res)=>{
 	res.redirect('/')
 })
 
+router.get('/signin-error', async (req,res)=>{
+	let error ={message:"Sign in"} 
+	res.render('pages/error',{error})
+})
+router.get('/signup-error', async (req,res)=>{
+	let error ={message:"Sign up"} 
+	res.render('pages/error',{error})
+})
+
+
 
 module.exports = router

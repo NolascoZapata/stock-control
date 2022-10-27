@@ -85,7 +85,7 @@ class ProductsDao extends MongoDBContainer {
 	}
 	async deleteProductByCategory(category) {
 		try {
-			const prod = await this.deleteAll(categories)
+			const prod = await this.deleteAll(category)
 			if (!prod) {
 				const errorMessage = `Can't delete all products of category ${category}`;
 				throw new Error(JSON.stringify(errorMessage));

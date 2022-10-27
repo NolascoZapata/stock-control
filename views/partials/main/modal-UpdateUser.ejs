@@ -1,0 +1,62 @@
+<div class="modal fade" id="updateUserModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Update User</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form class="d-flex flex-column align-items-center mt-3">
+          <label class="mt-3" for="update_UserName">User Name</label>
+          <input type="text" name="name" id="update_UserName" required>
+          <label class="mt-3" for="update_UserEmail">Email</label>
+          <input class="mt-3" type="email" name="Email" id="update_UserEmail" required>
+          <label class="mt-3" for="update_UserAvatar">Avatar</label>
+          <input class="mt-3" type="url" name="userAvatar" id="update_UserAvatar" required>
+          <input type="text" style="display: none" id="update_UserId">
+          <button class="btn btn-secondary mt-2" onclick="updateUser()">Update User</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+  function fillModal(email) {
+    fetch(`control/users/${email}`)
+      .then(response => response.json())
+      .catch(error=>console.log(error.message))
+      .then(data => {
+        document.getElementById("update_UserName").value= data.name
+        document.getElementById("update_UserEmail").value= data.email
+        document.getElementById("update_UserAvatar").value= data.userAvatar
+        document.getElementById("update_UserId").value= data._id
+        sessionStorage.setItem('data', JSON.stringify({password:data.password,isAdmin: data.isAdmin}))
+      })
+  }
+
+  function updateUser() {
+    let id = document.getElementById('update_UserId').value
+    let stData = JSON.parse(sessionStorage.getItem('data')) 
+    let formData = {
+      name: document.getElementById("update_UserName").value,
+      email: document.getElementById("update_UserEmail").value,
+      userAvatar: document.getElementById("update_UserAvatar").value,
+      password:stData.password,
+      isAdmin: stData.isAdmin,
+
+    }
+    fetch(`control/users/${id}`,{
+      method: 'PUT',
+      headers: {
+            'Content-type': 'application/json; charset=UTF-8' // Indicates the content 
+        },
+      body: JSON.stringify(formData)
+    })
+    .then(response => response.json())
+    .catch(error=>console.log(error.message))
+    .then(()=>location.href='/home')
+
+  }
+</script>

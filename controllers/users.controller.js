@@ -56,12 +56,31 @@ const deleteUserByEmailontroller = async (req, res, next) => {
 		next(error)
 	}
 }
+const updateUserByIdController= async(req,res,next)=>{
+	try {
+			const id = req.params.id
+			const updateUser = {
+				name:req.body.name,
+				isAdmin:req.body.isAdmin,
+				email: req.body.email,
+				userAvatar : req.body.userAvatar,
+				password : req.body.password,
+			}
+			const user = await users.updateById(id,updateUser)
+			console.log(`[PUT]==> Update User with id '${id}'`)
+			res.status(200).json({message:"User updated",status:"ok"})
+	} catch (error) {
+			console.log('error',error.message)
+			next(error)
+	}
+}
 
 
 module.exports = {
 	getAllUsersController,
 	getUserByEmailController,
 	saveUserController,
+	updateUserByIdController,
 	deleteUserByEmailontroller,
 	deleteAllUsersController
 
