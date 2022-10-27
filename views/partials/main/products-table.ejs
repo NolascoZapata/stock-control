@@ -88,7 +88,7 @@
   }
   reloadData('az',true)
   const deleteProduct=(id)=>{
-    fetch(`http://localhost:8080/control/products/${id}`,{method: 'DELETE'})
+    fetch(`/control/products/${id}`,{method: 'DELETE'})
     .then(res=>res.json)
     .catch(error=>console.error(error.message))
     .finally(()=>window.location.reload())
